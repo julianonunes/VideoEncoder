@@ -1,0 +1,60 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#wrapper {
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+body.site {
+	background-image: url("../images/36.jpg");
+	
+}
+
+#wrapper header {
+	height: 100px;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+	margin: 0;
+	padding: 0;	
+	position: relative;
+}
+
+#wrapper header h1 {
+	font-family: Arial;
+	font-size: 3em;
+	font-weight: 600;
+	padding-left: 20px;
+	margin: 0 auto;
+	color: #ffffff;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+#wrapper header h1 span {
+	color: #c1c1c1;
+	font-weight: 100;
+}
+
+#content {
+	
+	position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    height: 20%;
+}
+
+#fileUrl {
+	background-color: rgba(15,15,15,0.5);
+}
