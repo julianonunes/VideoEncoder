@@ -3,8 +3,10 @@ package videoencoder.storage;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
@@ -40,8 +42,11 @@ public class UploaderTest {
 	@Test
 	public void mustReturnTrueForSuccessfulUpload() throws IOException {
 		IUploader uploader = new S3Uploader();
-			
-		assertTrue(uploader.sendFile(createSampleFile()));
+		
+		File file = createSampleFile();
+		InputStream stream = new FileInputStream(file);
+		
+		assertTrue(uploader.sendFile(stream, file.length()));
 	}
 
 }

@@ -17,7 +17,7 @@
 <script src="http://nervgh.github.io/js/es5-shim.min.js"></script>
 <script src="http://nervgh.github.io/js/es5-sham.min.js"></script>
 </head>
-<body class="site"  nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter" ng-controller="HomeController">
+<body class="site" ng-controller="HomeController" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
 	<div id="wrapper">
 		<header>
 			<h1>
@@ -25,16 +25,30 @@
 			</h1>
 		</header>
 		<div id="content">
-			<div ng-show="uploader.isHTML5 && !uploader.isUploading">
-				<!-- 3. nv-file-over uploader="link" over-class="className" -->
-				<div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-					<span id="uploadMessage">{{uploadMessage}}</span>
+			<form action="/VideoEncoder/Encode" method="post"
+				enctype="multipart/form-data">
+				<div ng-show="uploader.isHTML5 && !uploader.isUploading">
+
+					<div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                            Base drop zone
+                        </div>
 				</div>
-			</div>
+				<!-- <div*>
+
+					<input type="file" id="fileToEncode" name="file" />
+					
+				</div>
+				<div>
+					<button id="encodeButton">Converter</button>
+				</div> -->
+				<div ng-show="fileEncoded">
+					<video src="{{encodedFileUrl}}" controls></video>
+				</div>
+			</form>
 		</div>
 	</div>
-	
-	
+
+
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script
@@ -45,10 +59,9 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"
 		type="text/javascript"></script>
-		
-	<script
-		src="assets/js/angular-file-upload.min.js" type="text/javascript"></script>
 
+	<script src="assets/js/angular-file-upload.min.js"
+		type="text/javascript"></script>
 	<script src="assets/js/app.js" type="text/javascript"></script>
 </body>
 </html>
