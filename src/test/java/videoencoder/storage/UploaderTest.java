@@ -46,7 +46,7 @@ public class UploaderTest {
 		File file = createSampleFile();
 		InputStream stream = new FileInputStream(file);
 		
-		assertTrue(uploader.sendFile(stream, file.length()));
+		assertFalse(uploader.sendFile(stream, file.length()).equals(""));
 	}
 
 }

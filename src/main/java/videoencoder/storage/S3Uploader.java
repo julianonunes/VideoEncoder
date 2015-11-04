@@ -1,6 +1,5 @@
 package videoencoder.storage;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.UUID;
 
@@ -9,6 +8,7 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
@@ -18,9 +18,10 @@ import videoencoder.storage.base.IUploader;
 public class S3Uploader implements IUploader {
 
 	private static final String BUCKET_NAME = "videoencoder-objects";	
+	private static final String BASE_URL = "https://s3-sa-east-1.amazonaws.com/videoencoder-objects/";
 	
 	@Override
-	public boolean sendFile(InputStream stream, Long contentLength) {
+	public String sendFile(InputStream stream, Long contentLength) {
 		AmazonS3 s3Client = new AmazonS3Client(new ProfileCredentialsProvider());
 		
 		try {
@@ -28,11 +29,12 @@ public class S3Uploader implements IUploader {
 			ObjectMetadata metadata = new ObjectMetadata();
 			metadata.setContentLength(contentLength);
 			
+			String filename = UUID.randomUUID().toString();
 			PutObjectResult result = s3Client.putObject(
-					new PutObjectRequest(BUCKET_NAME, UUID.randomUUID().toString(), stream, metadata));
+					new PutObjectRequest(BUCKET_NAME, filename, stream, metadata).withCannedAcl(CannedAccessControlList.PublicRead));
 		
 			// Se diferente de nulo, obteve sucesso (true).
-			return (result != null);
+			return result != null ? BASE_URL + filename : "";
 		
 		}
 		catch (AmazonServiceException ase) {
@@ -55,7 +57,7 @@ public class S3Uploader implements IUploader {
             System.out.println("Error Message: " + ace.getMessage());
         }
 		
-		return false;
+		return "";
 		
 	}
 

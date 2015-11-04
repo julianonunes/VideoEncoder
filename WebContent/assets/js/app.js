@@ -6,6 +6,7 @@ var app = angular.module('videoEncoder', ['angularFileUpload']);
 app.controller('HomeController', ['$scope', 'FileUploader', function ($scope, FileUploader) {
 	$scope.uploadMessage = 'Arraste aqui o arquivo que deseja converter';
 	$scope.fileEncoded = false;
+	$scope.encodedFileUrl = '';
 	
 	var uploader = $scope.uploader = new FileUploader( { autoUpload: true, url: '/VideoEncoder/Encode'});
 	
@@ -24,6 +25,9 @@ app.controller('HomeController', ['$scope', 'FileUploader', function ($scope, Fi
 	};
 	
 	uploader.onCompleteItem = function(item, response, status, headers) {
-		
+		if (response && response.encodedFile) {
+			$scope.encodedFileUrl = response.encodedFile;
+			$scope.fileEncoded = true;
+		}
 	};
 }]);
