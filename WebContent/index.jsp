@@ -30,7 +30,7 @@
 				<div ng-show="uploader.isHTML5 && !uploader.isUploading">
 
 					<div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-                            Base drop zone
+                            Arraste para esta área os arquivos que deseja converter
                         </div>
 				</div>
 				<!-- <div*>
