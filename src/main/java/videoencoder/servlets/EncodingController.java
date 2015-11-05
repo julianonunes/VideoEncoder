@@ -21,9 +21,9 @@ import videoencoder.storage.base.IUploader;
  * Servlet implementation class EncodingController
  */
 @WebServlet(urlPatterns = { "/Encode" })
-@MultipartConfig(fileSizeThreshold=1024*1024*10,    // 10 MB 
-	maxFileSize=1024*1024*50,          // 50 MB
-	maxRequestSize=1024*1024*400)      // 100 MB
+@MultipartConfig(fileSizeThreshold=1024*1024*200,    // 200 MB 
+	maxFileSize=1024*1024*200,          // 200 MB
+	maxRequestSize=1024*1024*400)      // 400 MB
 public class EncodingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
