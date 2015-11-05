@@ -25,7 +25,7 @@ public class S3Uploader implements IUploader {
 		AmazonS3 s3Client = new AmazonS3Client(new ProfileCredentialsProvider());
 		
 		try {
-			// Atribuo um UUID aleatório ao enviar para o Amazon S3.
+			// Atribuo um UUID aleatÃ³rio ao enviar para o Amazon S3.
 			ObjectMetadata metadata = new ObjectMetadata();
 			metadata.setContentLength(contentLength);
 			

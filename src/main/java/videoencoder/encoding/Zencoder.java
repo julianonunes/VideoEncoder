@@ -18,8 +18,8 @@ public class Zencoder implements IEncoder {
 
 	private static final String BASE_URL = "https://app.zencoder.com/api/v2/jobs";
 	/**
-	 * Utilizando chave de integraÁ„o. Neste caso os jobs de 
-	 * convers„o ser„o limitados a 5 segundos para testes apenas. 
+	 * Utilizando chave de integra√ß√£o. Neste caso os jobs de 
+	 * convers√£o ser√£o limitados a 5 segundos para testes apenas. 
 	 */
 	private static final String API_KEY = "32c53c9fda593a7f91dfa11ca2e3f41b";
 	
@@ -27,7 +27,7 @@ public class Zencoder implements IEncoder {
 	@Override
 	public String encode(String fileUrl) {
 		try {
-			// Configurando a conex„o
+			// Configurando a conex√£o
 			URL url = new URL(BASE_URL);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
@@ -35,7 +35,7 @@ public class Zencoder implements IEncoder {
 			connection.setRequestProperty("Zencoder-Api-Key", API_KEY);
 			connection.setDoOutput(true);
 			
-			// Envio de par‚metros
+			// Envio de par√¢metros
 			ZencoderInput input = new ZencoderInput();
 			input.setInput(fileUrl);
 			
