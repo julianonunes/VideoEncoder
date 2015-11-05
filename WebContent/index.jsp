@@ -42,7 +42,7 @@
 					<button id="encodeButton">Converter</button>
 				</div> -->
 				<div ng-show="fileEncoded">
-					<video src="{{encodedFileUrl}}" controls></video>
+					<video  src="{{encodedFileUrl | trustUrl}}" controls></video>
 				</div>
 			</form>
 		</div>

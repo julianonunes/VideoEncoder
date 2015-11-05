@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 filesCopiedToWebInfLib=
+gaeDeployDialogSettings=
+gaeLaunchAppInBrowser=true
 googleCloudSqlEnabled=false
 localDevMySqlEnabled=true
+validationExclusions=src/test/java/videoencoder/storage/UploaderTest.java
