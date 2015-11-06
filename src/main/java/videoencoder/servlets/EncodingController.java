@@ -78,7 +78,7 @@ public class EncodingController extends HttpServlet {
 		                if (!fileUrl.isEmpty()) {
 		                	IEncoder encoder = new Zencoder();
 		                	
-		                	out.append("{ 'encodedFile':" + encoder.encode(fileUrl) + "}");
+		                	out.append("{ \"encodedFile\":" + encoder.encode(fileUrl) + "}");
 		                	
 		                	response.setStatus(HttpServletResponse.SC_OK);
 		                	

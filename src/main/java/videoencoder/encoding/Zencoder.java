@@ -63,8 +63,8 @@ public class Zencoder implements IEncoder {
 	            // Convertendo string JSON em objeto
 	            ZencoderResponse response = new Gson().fromJson(responseBuffer.toString(), ZencoderResponse.class);
 	            
-	            if (response != null && response.getOutputs().length > 0) {
-	            	return response.getOutputs()[0].getId();
+	            if (response != null) {
+	            	return response.getId();
 	            }
 			}
 			
