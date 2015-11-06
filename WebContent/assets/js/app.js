@@ -64,7 +64,7 @@ app.controller('HomeController', ['$scope', '$http', '$sce', 'FileUploader', fun
 		}).then(function successCallback(response) {
 			var job = response.data.job;
 			if (job.state === 'finished') {
-				// Indico que a convers„o j· finalizou e carrego a exibi√ß√£o
+				// Indico que a convers„o j· finalizou e carrego a exibiÁ„o
 				$scope.encoding.isRunning = false;
 				$scope.encoding.hasFinished = true;
 				
@@ -76,7 +76,7 @@ app.controller('HomeController', ['$scope', '$http', '$sce', 'FileUploader', fun
 			}
 			else if (job.state === 'cancelled' 
 				|| job.state == 'failed') {
-				$scope.uploadMessage = 'Ops! A convers√£o n√£o foi conclu√≠da devido a algum problema.';
+				$scope.uploadMessage = 'Ops! A convers„o n„o foi concluÌda devido a algum problema.';
 				
 				$scope.encoding.isRunning = false;
 				$scope.encoding.hasFinished = false;
@@ -85,14 +85,14 @@ app.controller('HomeController', ['$scope', '$http', '$sce', 'FileUploader', fun
 				$scope.encoding.isRunning = true;
 				$scope.encoding.hasFinished = false;
 				
-				// Aguardo 5 segundos pra consultar o status da convers√£o novamente
+				// Aguardo 5 segundos pra consultar o status da convers„o novamente
 				setTimeout(function() {
 					ctrl.requestStatus(jobId);
 				}, 5000);
 			}
 			
 		}, function errorCallback(response) {
-			$scope.uploadMessage = 'Ops! A convers√£o n√£o foi conclu√≠da devido a algum problema.';
+			$scope.uploadMessage = 'Ops! A convers„o n„o foi concluÌda devido a algum problema.';
 			
 			$scope.encoding.isRunning = false;
 			$scope.encoding.hasFinished = false;
